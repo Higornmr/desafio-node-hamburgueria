@@ -17,7 +17,7 @@ const checkClientId = (request, response, next) => {
         return response.status(404).json({ message: "customer not found" })
     }
 
-    request.clientIndex = index
+    request.ordersIndex = index
     request.clientId = id
 
     next()
@@ -40,7 +40,7 @@ app.post('/orders', (request, response) => {
 
 app.put('/orders/:id', checkClientId, (request, response) => {
 
-    const index = request.clientIndex
+    const index = request.ordersIndex
     const id = request.clientId
 
     const updateOrder =  orders[index]
